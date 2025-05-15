@@ -32,9 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       image: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          isUrl: { msg: "La photo doit être une URL valide." },
-        },
       },
       prix: {
         type: DataTypes.FLOAT,

@@ -1,0 +1,24 @@
+<form action="/types/action" method="post" class="mb-3">
+  <% if (type && type.id) { %>
+    <input type="hidden" name="id" value="<%= type.id %>" />
+  <% } %>
+
+  <div class="mb-3">
+    <label for="nom" class="form-label">Nom du type :</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      name="nom" 
+      id="nom" 
+      value="<%= type ? type.nom : '' %>" 
+      required 
+      minlength="3" 
+      maxlength="255" 
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    <%= type?.id ? "Mettre à jour" : "Créer" %>
+  </button>
+  <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+</form>
