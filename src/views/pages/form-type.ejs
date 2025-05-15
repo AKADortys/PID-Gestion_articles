@@ -1,4 +1,5 @@
-<form action="/types/action" method="post" class="mb-3">
+<h1 class="display-1 mb-2"><%=type && type.id ? "Modification d'une catégorie": "Création de catégorie"%></h1>
+<form action="/types/action" method="post" class="form py-4 px-2 rounded bg-dark bg-gradient text-white shadow-lg">
   <% if (type && type.id) { %>
     <input type="hidden" name="id" value="<%= type.id %>" />
   <% } %>

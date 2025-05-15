@@ -6,7 +6,8 @@ const fs = require("fs");
 exports.renderAllArticles = async (req, res) => {
   try {
     const articles = await articleService.getAll();
-    res.render("pages/main", { articles: articles });
+    const types = await typeService.getAll();
+    res.render("pages/list-article", { articles: articles, types: types });
   } catch (error) {
     res.render("error", { error });
   }
@@ -109,7 +110,7 @@ exports.renderFormUpdt = async (req, res) => {
     const types = await typeService.getAll();
     if (!article)
       return res.render("error", { error: { message: "Article non trouvé." } });
-    res.render("article/form", { article, types });
+    res.render("pages/form-article", { article: article, types: types });
   } catch (error) {
     res.render("error", { error });
   }
