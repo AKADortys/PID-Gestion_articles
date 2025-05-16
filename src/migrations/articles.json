@@ -1,0 +1,58 @@
+[
+  {
+    "titre": "Salade de chèvre chaud",
+    "description": "Salade verte avec toasts de fromage de chèvre et vinaigrette au miel.",
+    "prix": 6.5,
+    "image": "/images/preset/chevre.jpg",
+    "type": 3
+  },
+  {
+    "titre": "Boeuf bourguignon",
+    "description": "Un plat traditionnel français à base de bœuf mijoté au vin rouge.",
+    "prix": 14.0,
+    "image": "/images/preset/boeuf-bourguignon.jpg",
+    "type": 2
+  },
+  {
+    "titre": "Moelleux au chocolat",
+    "description": "Dessert fondant avec un cœur coulant au chocolat noir intense.",
+    "prix": 5.0,
+    "image": "/images/preset/moelleux.jpg",
+    "type": 1
+  },
+  {
+    "titre": "Soupe à l'oignon gratinée",
+    "description": "Une délicieuse soupe à base d'oignons caramélisés, gratinée avec du fromage et servie avec du pain.",
+    "prix": 4.8,
+    "image": "/images/preset/soupe-oignon.jpg",
+    "type": 3
+  },
+  {
+    "titre": "Poulet basquaise",
+    "description": "Poulet mijoté avec des poivrons, tomates et épices du Pays basque.",
+    "prix": 13.5,
+    "image": "/images/preset/poulet-basquaise.jpg",
+    "type": 2
+  },
+  {
+    "titre": "Quiche lorraine",
+    "description": "Spécialité de Lorraine à base de crème, œufs, lardons et pâte brisée.",
+    "prix": 7.2,
+    "image": "/images/preset/quiche-lorraine.jpg",
+    "type": 2
+  },
+  {
+    "titre": "Tarte aux pommes maison",
+    "description": "Pâte croustillante garnie de pommes caramélisées au beurre et à la cannelle.",
+    "prix": 4.3,
+    "image": "/images/preset/tarte-pommes.jpg",
+    "type": 1
+  },
+  {
+    "titre": "Crème brûlée à la vanille",
+    "description": "Crème onctueuse parfumée à la vanille avec une fine couche de sucre caramélisé.",
+    "prix": 5.2,
+    "image": "/images/preset/creme-brulee.jpg",
+    "type": 1
+  }
+]

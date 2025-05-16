@@ -5,7 +5,7 @@
             <div class="card-header bg-dark bg-gradient">
                 <h5 class="card-title text-white"><%=n.titre%></h5>
             </div>
-            <div class="overflow-hidden mx-auto position-relative" style="max-height: 500px;">
+            <div class="overflow-hidden position-relative" style="max-height: 400px;">
                 <a href="<%= n.image ? n.image : "images/none.png" %>">
                     <img class="img-fluid" src="<%= n.image ? n.image : "images/none.png" %>" alt="<%=n.titre%>">
                 </a>
@@ -16,12 +16,15 @@
                 </p>
             </div>
             <div class="d-flex justify-content-evenly border-top border-bottom my-1">
-                <p><strong>Prix:</strong> <%=n.prix%> Euro</p> 
-                <p><strong>Catégorie:</strong> <%=types.find((i)=> i.id === n.type_id).nom%></p>
+                <span class="p-1"><strong>Prix:</strong> <%=n.prix%> Euro</span> 
+                <span class="p-1"><strong>Catégorie:</strong> <%=types.find((i)=> i.id === n.type_id).nom%></span>
             </div>
             <div class="d-flex justify-content-evenly mb-2">
                 <a href="articles/<%=n.id%>/edit" class="btn btn-success">Modifier <i class="bi bi-pencil-square"></i></a href="articles/<%=n.id%>/edit">
-                <button class="btn btn-danger">Supprimer <i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger btn-supprimer" data-id="<%= n.id %>">
+                    Supprimer
+                    <i class="bi bi-trash"></i>
+                </button>
             </div>
             <div class="card-footer d-flex justify-content-between text-white bg-dark bg-gradient">
                 <small>Ajouté le : <span class="p-1 bg-primary rounded"><%=formatDate(n.createdAt)%></span></small>
@@ -30,6 +33,33 @@
         </div>
         <%})%>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const boutonsSupprimer = document.querySelectorAll('.btn-supprimer');
+
+    boutonsSupprimer.forEach(bouton => {
+        bouton.addEventListener('click', async () => {
+            const id = bouton.getAttribute('data-id');
+
+            // confirmation utilisateur
+            if (!confirm("Voulez-vous vraiment supprimer cet article ?")) return;
+
+            try {
+                const response = await fetch(`/articles/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                bouton.closest('.card').remove();
+            } catch (error) {
+                console.error("Erreur fetch :", error);
+                alert("Erreur réseau.");
+            }
+        });
+    });
+});
+</script>
 
 <%
 function formatDate(date) {
@@ -41,4 +71,5 @@ function formatDate(date) {
     const minutes = String(d.getMinutes()).padStart(2, '0');
     return `${jour}/${mois}/${annee} ${heures}:${minutes}`;
 }
+
 %>

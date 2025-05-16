@@ -28,11 +28,8 @@ sequelize
 const Type = typeModel(sequelize, DataTypes);
 const Article = articleModel(sequelize, DataTypes);
 
-Type.hasMany(Article, { foreignKey: "type_id" });
-Article.belongsTo(Type, { foreignKey: "type_id" });
-
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     console.log("Modèles synchronisés avec la base de données");
   })
