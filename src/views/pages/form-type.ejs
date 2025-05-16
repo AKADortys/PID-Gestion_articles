@@ -1,10 +1,10 @@
 <h1 class="display-1 mb-2"><%=type && type.id ? "Modification d'une catégorie": "Création de catégorie"%></h1>
-<form action="/types/action" method="post" class="form py-4 px-2 rounded bg-dark bg-gradient text-white shadow-lg">
+<form action="/types/action" method="post" class="form py-4 px-2 rounded bg-dark bg-gradient text-white shadow-lg border">
   <% if (type && type.id) { %>
     <input type="hidden" name="id" value="<%= type.id %>" />
   <% } %>
 
-  <div class="mb-3">
+  <div class="mb-3 col-10 mx-auto">
     <label for="nom" class="form-label">Nom du type :</label>
     <input 
       type="text" 
@@ -18,8 +18,10 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary">
-    <%= type?.id ? "Mettre à jour" : "Créer" %>
-  </button>
-  <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+  <div class="col-10 mx-auto">
+    <button type="submit" class="btn btn-primary">
+      <%= type?.id ? "Mettre à jour" : "Créer" %>
+    </button>
+    <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+  </div>
 </form>

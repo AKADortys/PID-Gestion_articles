@@ -1,5 +1,51 @@
-<h1>liste Catégories</h1>
+<h1 class="display-1 mb-2">liste Catégories</h1>
 
-<%types.forEach((n)=>{%>
-    <p>nom <%=n.nom%></p>
-<%})%>
+<table class="table-light table table-striped text-center">
+    <thead class="border-dark">
+        <th class="text-warning">Id</th>
+        <th class="text-warning">Nom</th>
+        <th class="text-warning">Ajouté le</th>
+        <th class="text-warning">Modifié le</th>
+        <th class="text-warning">Action</th>
+    </thead>
+    <tbody>
+        <% types.forEach((type)=> { %>
+            <tr>
+                <th>
+                    <%=type.id%>
+                </th>
+                <td>
+                    <%=type.nom%>
+                </td>
+                <td>
+                    <%=formatDate(type.createdAt)%>
+                </td>
+                <td>
+                    <%=formatDate(type.updatedAt)%>
+                </td>
+                <td>
+                    <a class="btn btn-success" href="/types/<%=type.id%>/edit">
+                        Modifier
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button class="btn btn-danger">
+                        Supprimer
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>
+<%
+function formatDate(date) {
+    const d = new Date(date);
+    const jour = String(d.getDate()).padStart(2, '0');
+    const mois = String(d.getMonth() + 1).padStart(2, '0');
+    const annee = d.getFullYear();
+    const heures = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    return `${jour}/${mois}/${annee} ${heures}:${minutes}`;
+}
+
+%>
