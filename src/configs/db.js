@@ -28,6 +28,9 @@ sequelize
 const Type = typeModel(sequelize, DataTypes);
 const Article = articleModel(sequelize, DataTypes);
 
+Type.associate({ Article });
+Article.associate({ Type });
+
 sequelize
   .sync({ force: false })
   .then(() => {

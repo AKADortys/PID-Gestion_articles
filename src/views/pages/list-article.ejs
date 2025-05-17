@@ -1,13 +1,12 @@
-<h1 class="display-1 mb-2">Liste articles</h1>
 <div class="row">
     <%articles.forEach((n)=>{%>
-        <div class="card border-dark p-0 mb-2 col-12 col-lg-4 shadow-lg">
+        <div class="card border-dark p-0 mb-2 col-6 col-lg-4 shadow-lg">
             <div class="card-header bg-dark bg-gradient">
                 <h5 class="card-title text-primary">
                     <%=n.titre%>
                 </h5>
             </div>
-            <div class="overflow-hidden position-relative" style="max-height: 200px;">
+            <div class="overflow-hidden position-relative" style="max-height: 400px;">
                 <a href="<%= n.image ? n.image : " images/none.png" %>">
                     <img class="img-fluid" src="<%= n.image ? n.image : " images/none.png" %>" alt="<%=n.titre%>">
                 </a>
@@ -22,7 +21,7 @@
                     <%=n.prix%> Euro
                 </span>
                 <span class="p-1"><strong>Catégorie:</strong>
-                    <%=types.find((i)=> i.id === n.type_id).nom%>
+                    <%=types.find((i)=> i.id === n.type_id)?.nom ||"Aucunes"%>
                 </span>
             </div>
             <div class="d-flex justify-content-evenly mb-2">
@@ -36,10 +35,10 @@
                 </button>
             </div>
             <div class="card-footer d-flex justify-content-between text-white bg-dark bg-gradient">
-                <small>Ajouté le : <span class="p-1 bg-primary rounded">
+                <small>Ajouté <span class="p-1 bg-primary rounded">
                         <%=formatDate(n.createdAt)%>
                     </span></small>
-                <small>Modifié le : <span class="p-1 bg-primary rounded">
+                <small>Modifié <span class="p-1 bg-primary rounded">
                         <%=formatDate(n.updatedAt)%>
                     </span></small>
             </div>

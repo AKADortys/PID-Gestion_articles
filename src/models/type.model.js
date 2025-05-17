@@ -25,5 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: true }
   );
 
+  Type.associate = (models) => {
+    Type.hasMany(models.Article, {
+      foreignKey: "type_id",
+    });
+  };
   return Type;
 };

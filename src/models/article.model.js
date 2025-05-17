@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       type_id: {
         type: DataTypes.BIGINT,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: "types",
           key: "id",
@@ -56,6 +56,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     { timestamps: true }
   );
+
+  Article.associate = (models) => {
+    Article.belongsTo(models.Type, {
+      foreignKey: "type_id",
+      onDelete: "SET NULL",
+    });
+  };
 
   return Article;
 };

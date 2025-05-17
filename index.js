@@ -7,12 +7,14 @@ require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/images", express.static("src/images"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "src", "views"));
+
 app.use(expressLayouts);
 app.set("layout", "layout");
-app.use("/images", express.static("src/images"));
 
+app.use("/", require("./src/routes/main.route"));
 app.use("/types", require("./src/routes/type.route"));
 app.use("/articles", require("./src/routes/article.route"));
 

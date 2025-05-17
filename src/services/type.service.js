@@ -51,7 +51,7 @@ module.exports = {
       await type.destroy();
       return true;
     } catch (error) {
-      handdleError(error, this.serviceName);
+      console.log(error);
     }
   },
 };

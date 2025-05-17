@@ -1,6 +1,6 @@
 <h1 class="display-1 mb-2">liste Catégories</h1>
 
-<table class="table-light table table-striped text-center">
+<table class="table-success table table-striped table-hover text-center">
     <thead class="border-dark">
         <th class="text-warning">Id</th>
         <th class="text-warning">Nom</th>
@@ -28,7 +28,7 @@
                         Modifier
                         <i class="bi bi-pencil-square"></i>
                     </a>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-danger btn-supprimer" data-id="<%=type.id%>">
                         Supprimer
                         <i class="bi bi-trash"></i>
                     </button>
@@ -37,6 +37,32 @@
             <% }) %>
     </tbody>
 </table>
+
+<script>
+        const boutonsSupprimer = document.querySelectorAll('.btn-supprimer');
+
+        boutonsSupprimer.forEach(bouton => {
+            bouton.addEventListener('click', async () => {
+                const id = bouton.getAttribute('data-id');
+
+                // confirmation utilisateur
+                if (!confirm("Voulez-vous vraiment supprimer cet article ?")) return;
+
+                try {
+                    const response = await fetch(`/types/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    bouton.closest('tr').remove();
+                } catch (error) {
+                    console.error("Erreur fetch :", error);
+                    alert("Erreur réseau.");
+                }
+            });
+        });
+</script>
 <%
 function formatDate(date) {
     const d = new Date(date);
