@@ -1,11 +1,16 @@
-const { Article } = require("../configs/db");
+const { Article, Type } = require("../configs/db");
 const { handdleError } = require("../utils/service.util");
 
 module.exports = {
   serviceName: "Article",
   getAll: async () => {
     try {
-      return await Article.findAll();
+      return await Article.findAll({
+        include: {
+          model: Type,
+          attributes: ["nom"], //récupérer que certaines colonnes
+        },
+      });
     } catch (error) {
       handdleError(error, this.serviceName);
     }

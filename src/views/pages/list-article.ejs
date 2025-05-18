@@ -7,8 +7,8 @@
                 </h5>
             </div>
             <div class="overflow-hidden position-relative" style="max-height: 400px;">
-                <a href="<%= n.image ? n.image : " images/none.png" %>">
-                    <img class="img-fluid" src="<%= n.image ? n.image : " images/none.png" %>" alt="<%=n.titre%>">
+                <a href="<%= n.image ? n.image : " /images/preset/error.jpg" %>">
+                    <img class="img-fluid" src="<%= n.image ? n.image : " /images/preset/error.jpg" %>" alt="<%=n.titre%>">
                 </a>
             </div>
             <div class="card-body">
@@ -44,6 +44,20 @@
             </div>
         </div>
         <%})%>
+        <div class="card border-dark p-0 mb-2 col-6 col-lg-4 shadow-lg" style="min-height: 500px;">
+            <div class="card-header bg-dark bg-gradient">
+                <h5 class="text-primary">Ajouter un article</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Créez un article personnel avec vos propre images !</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between text-white bg-dark bg-gradient">
+                <a href="/articles/new" class="btn btn-outline-primary">
+                    Ajouter un article
+                    <i class="bi bi-plus-circle"></i>
+                </a>
+            </div>
+        </div>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

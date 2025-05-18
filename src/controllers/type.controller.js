@@ -66,6 +66,7 @@ exports.renderFormCreate = async (req, res) => {
     res.render("error", { error });
   }
 };
+
 exports.renderFormUpdt = async (req, res) => {
   const { id } = req.params;
   try {

@@ -1,12 +1,12 @@
 <h1 class="display-1 mb-2">liste Catégories</h1>
 
 <table class="table-success table table-striped table-hover text-center">
-    <thead class="border-dark">
-        <th class="text-warning">Id</th>
-        <th class="text-warning">Nom</th>
-        <th class="text-warning">Ajouté le</th>
-        <th class="text-warning">Modifié le</th>
-        <th class="text-warning">Action</th>
+    <thead class="border-dark table-dark">
+        <th class="text-primary">Id</th>
+        <th class="text-primary">Nom</th>
+        <th class="text-primary">Ajouté le</th>
+        <th class="text-primary">Modifié le</th>
+        <th class="text-primary">Action</th>
     </thead>
     <tbody>
         <% types.forEach((type)=> { %>
@@ -35,6 +35,14 @@
                 </td>
             </tr>
             <% }) %>
+                <tr class="table-primary">
+                    <td colspan="5">
+                        <a href="/types/new" class="btn btn-outline-primary">
+                            Créer une catégorie
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
+                    </td>
+                </tr>
     </tbody>
 </table>
 
