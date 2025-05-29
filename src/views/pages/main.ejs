@@ -96,6 +96,34 @@
     <% }) %>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const boutonsSupprimer = document.querySelectorAll('.btn-supprimer');
+
+        boutonsSupprimer.forEach(bouton => {
+            bouton.addEventListener('click', async () => {
+                const id = bouton.getAttribute('data-id');
+
+                // confirmation utilisateur
+                if (!confirm("Voulez-vous vraiment supprimer cet article ?")) return;
+
+                try {
+                    const response = await fetch(`/articles/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    bouton.closest('.card').remove();
+                } catch (error) {
+                    console.error("Erreur fetch :", error);
+                    alert("Erreur réseau.");
+                }
+            });
+        });
+    });
+</script>
+
 <%
 function formatDate(date) {
     const d = new Date(date);
