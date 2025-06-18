@@ -15,9 +15,13 @@ router.post(
   upload.single("image"),
   articleController.createOrUpdateArticle
 );
-
+// listes des articles
 router.get("/", articleController.renderAllArticles);
+
+// détails d'un article
 router.get("/:id", articleController.renderArticleById);
+
+// suppression articles
 router.delete("/:id", articleController.deleteArticle);
 
 module.exports = router;

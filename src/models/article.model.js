@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       titre: {
         type: DataTypes.STRING(150),
+        unique: true,
         allowNull: false,
         validate: {
           notNull: { msg: "Le titre est requis." },

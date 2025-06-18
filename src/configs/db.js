@@ -10,9 +10,6 @@ const dbPass = process.env.DB_PASS;
 const sequelize = new Sequelize(dbName, dbUser, dbPass, {
   host: dbHost,
   dialect: "mysql",
-  dialectOptions: {
-    timezone: "Europe/Paris",
-  },
   logging: false,
 });
 

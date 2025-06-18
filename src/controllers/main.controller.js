@@ -1,6 +1,7 @@
 const articleService = require("../services/article.service");
 const typeService = require("../services/type.service");
 
+// fonction pour renvoyer la vue de la page d'accueil
 exports.renderMain = async (req, res) => {
   try {
     const articles = await articleService.getAll();

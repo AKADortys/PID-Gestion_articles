@@ -3,6 +3,7 @@ const typeService = require("../services/type.service");
 const path = require("path");
 const fs = require("fs");
 
+// fonction pour renvoyer la vue de la listes des articles
 exports.renderAllArticles = async (req, res) => {
   try {
     const articles = await articleService.getAll();
@@ -13,6 +14,7 @@ exports.renderAllArticles = async (req, res) => {
   }
 };
 
+// fonction pour renvoyer la vue de un article
 exports.renderArticleById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -26,6 +28,7 @@ exports.renderArticleById = async (req, res) => {
   }
 };
 
+// suppression d'un article
 exports.deleteArticle = async (req, res) => {
   const { id } = req.params;
   try {
@@ -50,6 +53,7 @@ exports.deleteArticle = async (req, res) => {
   }
 };
 
+// action création modification
 exports.createOrUpdateArticle = async (req, res) => {
   const { id, titre, description, prix, type_id } = req.body;
   const imageUrl = req.file ? `/images/${req.file.filename}` : null;
@@ -95,6 +99,7 @@ exports.createOrUpdateArticle = async (req, res) => {
   }
 };
 
+// fonction pour renvoyer la vue du formulaire mode création
 exports.renderFormCreate = async (req, res) => {
   try {
     const types = await typeService.getAll();
@@ -104,6 +109,7 @@ exports.renderFormCreate = async (req, res) => {
   }
 };
 
+// fonction pour renvoyer la vue du formulaire mode modif
 exports.renderFormUpdt = async (req, res) => {
   try {
     const article = await articleService.getById(req.params.id);

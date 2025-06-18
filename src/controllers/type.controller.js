@@ -1,6 +1,6 @@
 const typeService = require("../services/type.service");
 
-// Récupérer tous les types
+// fonction pour renvoyer la vue de la liste des types
 exports.renderAllTypes = async (req, res) => {
   try {
     const types = await typeService.getAll();
@@ -10,7 +10,7 @@ exports.renderAllTypes = async (req, res) => {
   }
 };
 
-// Récupérer un type par ID
+// fonction pour renvoyer la vue d'un type par ID
 exports.renderTypeById = async (req, res) => {
   const { id } = req.params;
   try {
@@ -24,6 +24,7 @@ exports.renderTypeById = async (req, res) => {
   }
 };
 
+// actions de creation ou modification d'un type
 exports.createOrUpdateType = async (req, res) => {
   const { id, nom } = req.body;
   try {
@@ -59,6 +60,7 @@ exports.deleteType = async (req, res) => {
   }
 };
 
+// fonction pour renvoyer la vue du formulaire mode création
 exports.renderFormCreate = async (req, res) => {
   try {
     res.render("pages/form-type", { type: null });
@@ -67,6 +69,7 @@ exports.renderFormCreate = async (req, res) => {
   }
 };
 
+// fonction pour renvoyer la vue du formulaire mode modif
 exports.renderFormUpdt = async (req, res) => {
   const { id } = req.params;
   try {

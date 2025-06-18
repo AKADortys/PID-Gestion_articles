@@ -1,7 +1,7 @@
 require("dotenv").config(); // Charger les variables d'environnement
 const fs = require("fs");
 const path = require("path");
-const { sequelize, Type, Article } = require("../configs/db"); // Chemin à adapter si différent
+const { sequelize, Type, Article } = require("../configs/db");
 
 async function seedDatabase() {
   try {
@@ -34,9 +34,9 @@ async function seedDatabase() {
       });
     }
 
-    console.log("✔ Données insérées avec succès !");
+    console.log(" Données insérées avec succès !");
   } catch (err) {
-    console.error("❌ Erreur lors de l’initialisation :", err);
+    console.error(" Erreur lors de l’initialisation :", err);
   } finally {
     await sequelize.close();
   }
