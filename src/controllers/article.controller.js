@@ -8,6 +8,7 @@ exports.renderAllArticles = async (req, res) => {
   try {
     const articles = await articleService.getAll();
     const types = await typeService.getAll();
+    console.log(articles);
     res.render("pages/list-article", { articles: articles, types: types });
   } catch (error) {
     res.render("error", { error });
@@ -22,7 +23,7 @@ exports.renderArticleById = async (req, res) => {
     if (!article) {
       return res.render("error", { error: { message: "Article non trouvé." } });
     }
-    res.render("article/article-details", { article });
+    res.render("pages/article-details", { article });
   } catch (error) {
     res.render("error", { error });
   }

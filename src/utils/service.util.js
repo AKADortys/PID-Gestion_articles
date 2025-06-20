@@ -1,5 +1,5 @@
-const handdleError = (error, serviceName) => {
-  console.log(`Erreur sur service :${serviceName}\n`, error.errors);
+const handdleError = (error) => {
+  console.log(`Erreur:\n`, error.errors);
   throw error;
 };
 
