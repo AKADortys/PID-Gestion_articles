@@ -17,7 +17,9 @@ module.exports = {
   },
   getById: async (id) => {
     try {
-      return await Article.findByPk(id);
+      return await Article.findByPk(id, {
+        include: { model: Type, attributes: ["nom"] },
+      });
     } catch (error) {
       handdleError(error, this.serviceName);
     }

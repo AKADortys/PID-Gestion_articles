@@ -1,45 +1,51 @@
-
-        <div class="card border-dark p-0 mb-2 col-12 col-md-6 col-lg-4 col-xl-3 shadow-lg mx-auto">
-            <div class="card-header bg-dark bg-gradient">
-                <h5 class="card-title text-primary">
-                    <%=article.titre%>
-                </h5>
-            </div>
-            <div class="overflow-hidden position-relative" style="max-height: 400px;">
-                <a href="<%= article.image ? article.image : " /images/preset/error.jpg" %>">
-                    <img class="img-fluid" src="<%= article.image ? article.image : " /images/preset/error.jpg" %>" alt="<%=article.titre%>">
-                </a>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    <%=article.description%>
-                </p>
-            </div>
-            <div class="d-flex justify-content-evenly border-top border-bottom my-1">
-                <span class="p-1"><strong>Prix:</strong>
-                    <%=article.prix%> Euro
-                </span>
-
-            </div>
-            <div class="card-footer d-flex justify-content-between text-white bg-dark bg-gradient">
-                <a href="articles/<%=article.id%>/edit" class="btn btn-success">
-                    Modifier
-                    <i class="bi bi-pencil-square"></i>
-                </a href="articles/<%=article.id%>/edit">
-                <button class="btn btn-danger btn-supprimer" data-id="<%= article.id %>">
-                    Supprimer
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
+<h5 class="display-1 text-primary mb-4">
+    <%=article.titre%>
+</h5>
+<div class="d-flex flex-column flex-md-row">
+    <div class="card border-dark p-0 mb-2 col-12 col-md-6 shadow-lg">
+        <div class="card-header bg-dark bg-gradient">
         </div>
+        <div class="overflow-hidden position-relative" style="max-height: 400px;">
+            <a href="<%= article.image ? article.image : " /images/preset/error.jpg" %>">
+                <img class="img-fluid" src="<%= article.image ? article.image : " /images/preset/error.jpg" %>" alt="
+                <%=article.titre%>">
+            </a>
+        </div>
+        <div class="card-footer bg-dark bg-gradient">
+        </div>
+    </div>
+    <div class="col-12 col-md-6 py-2 px-3">
+        <h5 class="display-4 text-primary mb-3">Description de l'article</h5>
+        <pre class="text-break">
+            <%=article.description%>
+        </pre>
+        <div class="d-flex justify-content-evenly border-top border-bottom my-4 py-4">
+            <span class="p-1"><strong>Prix:</strong>
+                <%=article.prix%> Euro
+            </span>
+            <span class="p-1"> <strong>Catégorie:</strong>
+                <%=article.type.nom%>
+            </span>
+        </div>
+        <div class="d-flex justify-content-evenly">
+                <a href="<%=article.id%>/edit" class="btn btn-success">
+                Modifier
+                <i class="bi bi-pencil-square"></i>
+                </a>
+            <button class="btn btn-danger btn-supprimer" data-id="<%= article.id %>">
+                Supprimer
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </div>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const boutonsSupprimer = document.querySelectorAll('.btn-supprimer');
 
         boutonsSupprimer.forEach(bouton => {
-            boutoarticle.addEventListener('click', async () => {
-                const id = boutoarticle.getAttribute('data-id');
+            bouton.addEventListener('click', async () => {
+                const id = bouton.getAttribute('data-id');
 
                 // confirmation utilisateur
                 if (!confirm("Voulez-vous vraiment supprimer cet article ?")) return;
@@ -51,7 +57,8 @@
                             'Content-Type': 'application/json'
                         }
                     });
-                    boutoarticle.closest('.card').remove();
+                    alert("Article supprimé ! Vous allez être redirigé")
+                    window.location.href = '/articles'
                 } catch (error) {
                     console.error("Erreur fetch :", error);
                     alert("Erreur réseau.");
